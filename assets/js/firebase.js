@@ -9,7 +9,7 @@ var config = {
 };
 firebase.initializeApp(config);
 database = firebase.database();
-employeeRef = firebase.database('Employees/');
+employeeRef = database.ref('Employees/');
 
 $("#submit-btn").on("click",function(event){
   event.preventDefault();
@@ -25,10 +25,11 @@ $("#submit-btn").on("click",function(event){
     startDate,
     monthlyRate,
   };
+  console.log(postData);
 
   employeeRef.push(postData)
 
-};
+});
 
 employeeRef.on('child_added', function(snapshot){
   console.log(snapshot.val());
