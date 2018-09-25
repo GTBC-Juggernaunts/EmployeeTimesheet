@@ -33,14 +33,15 @@ $("#submit-btn").on("click",function(event){
 
 employeeRef.on('child_added', function(snapshot){
   console.log(snapshot.val());
+  const data = snapshot.val();
   const monthsWorked = 2; //need to use moment.j
   const totalBilled = 20000;
   const newRow = `
-  <th>${employeeName}</th>
-  <th>${role}</th>
-  <th>${startDate}</th>
+  <th>${data.employeeName}</th>
+  <th>${data.role}</th>
+  <th>${data.startDate}</th>
   <th>${monthsWorked}</th>
-  <th>${monthlyRate}</th>
+  <th>${data.monthlyRate}</th>
   <th>${totalBilled}</th>
   `;
   $("#employeeTable").append(newRow)
