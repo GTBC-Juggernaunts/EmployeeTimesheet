@@ -40,8 +40,10 @@ $("#submit-btn").on("click",function(event){
 employeeRef.on('child_added', function(snapshot){
   console.log(snapshot.val());
   const data = snapshot.val();
-  const monthsWorked = 2; //need to use moment.j
-  const totalBilled = 20000;
+  const monthsWorked = (moment(data.startDate, 'MM/DD/YYYY').diff(moment(),'days'))/30*-1;
+  const totalBilled = monthsWorked * data.monthlyRate;
+  console.log(moment());
+  console.log();
 
   //create new row using string literals
   const newRow = `
