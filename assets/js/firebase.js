@@ -19,7 +19,6 @@ $("#submit-btn").on("click",function(event){
   const role = $("#role").val().trim();
   const startDate = $("#start-date").val().trim();
   const monthlyRate = $("#monthly-rate").val().trim();
-  const dateAdded = moment();
 
   //creates single object with all the local variables above
   const postData = {
@@ -27,7 +26,6 @@ $("#submit-btn").on("click",function(event){
     role,
     startDate,
     monthlyRate,
-    dateAdded,
   };
   console.log(postData);
 
@@ -40,8 +38,8 @@ $("#submit-btn").on("click",function(event){
 employeeRef.on('child_added', function(snapshot){
   console.log(snapshot.val());
   const data = snapshot.val();
-  const monthsWorked = (moment(data.startDate, 'MM/DD/YYYY').diff(moment(),'days'))/30*-1;
-  const totalBilled = monthsWorked * data.monthlyRate;
+  const monthsWorked = Math.floor(((moment(data.startDate, 'MM/DD/YYYY').diff(moment(),'days'))/30*-1));
+  const totalBilled = Math.floor(monthsWorked * data.monthlyRate);
   console.log(moment());
   console.log();
 
