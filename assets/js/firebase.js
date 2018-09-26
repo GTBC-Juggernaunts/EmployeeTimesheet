@@ -46,15 +46,15 @@ employeeRef.on('child_added', function(snapshot){
   console.log();
 
   //create new row using string literals
-  const newRow = `
-  <th>${data.employeeName}</th>
-  <th>${data.role}</th>
-  <th>${data.startDate}</th>
-  <th>${monthsWorked}</th>
-  <th>${data.monthlyRate}</th>
-  <th>${totalBilled}</th>
-  `;
+  const newRow = `<tr>
+  <td>${data.employeeName}</td>
+  <td>${data.role}</td>
+  <td>${data.startDate}</td>
+  <td>${monthsWorked}</td>
+  <td>${data.monthlyRate}</td>
+  <td>${totalBilled}</td>
+  </tr>`;
 
-  $("#employeeTable").append(newRow); //adds row to table on page
+  $("#employeeTable").prepend(newRow); //adds row to table on page
 
 });
